@@ -24,8 +24,7 @@ RNAseqMB231_Rank2 <- RNAseqMB231_Rank %>%
   filter(peakGenes == 'Yes')
 
 
-HighlightGenes <- c('BIRC3','RELB','TRAF1','HLA-A','HLA-B','HLA-H','VSIR','CD276','VTCN1','PDCD1LG2')
-HighlightGenes2 <- c('BIRC3','RELB','TRAF1','VSIR','CD276','VTCN1') # Only include positive peak genes
+HighlightGenes2 <- c('BIRC3','RELB','TRAF1','VSIR','CD276','VTCN1') 
 
 # Plot the generanking plot
 ggGeneRank <- ggplot(RNAseqMB231_Rank,aes(x = ID, y = Log2FC,color = peakGenes)) +
@@ -48,28 +47,6 @@ ggGeneRank <- ggplot(RNAseqMB231_Rank,aes(x = ID, y = Log2FC,color = peakGenes))
         axis.title = element_text(size=rel(1.3),face = 'plain',family = 'Arial'),
         legend.position = 'top',aspect.ratio = 0.75)
 ggsave('./Figures/GeneRank.png',plot=ggGeneRank,dpi=1200) # export the figure in high quality
-
-# Version 2, only include positive dots in red!
-ggGeneRank2 <- ggplot(RNAseqMB231_Rank2, aes(x = ID, y = Log2FC, color = peakGenes)) +
-  geom_point(position = position_jitterdodge(1),size = 1) +
-  geom_text_repel(aes(label = gene,fontface = 'italic',family = 'Arial'), 
-                  data = RNAseqMB231_Rank[RNAseqMB231_Rank$gene %in% HighlightGenes2,],box.padding  = 0, 
-                  point.padding = 0,
-                  segment.color = 'black',nudge_x = -800,nudge_y = 5.5,force = 6) +
-  theme_classic() +
-  xlab("Rank of significantly changed PD-L1 peak genes") +
-  ylab("Log2FC") +
-  ggtitle("") +
-  theme(plot.title = element_text(hjust=0, 
-                                  face = "plain")) +
-  scale_color_manual(labels = c('PD-L1 peak genes'),values = c('red2')) + # Change the Colors of the plot
-  theme(legend.title = element_blank(),
-        legend.text = element_text(size=rel(1.3),face='plain',family = 'Arial'),
-        axis.text.x = element_text(size=rel(1.6),face = 'plain',family = 'Arial'), 
-        axis.text.y = element_text(size=rel(1.6),face = 'plain',family = 'Arial'),
-        axis.title = element_text(size=rel(1.3),face = 'plain',family = 'Arial'),
-        legend.position = 'top',aspect.ratio = 0.75)
-ggsave('./Figures/GeneRank2.png',plot=ggGeneRank2,dpi=1200) # export the figure in high quality
 
 
 

@@ -21,5 +21,4 @@ bamCoverage -b $Protein \
 --centerReads \
 -p 6 2> /home/cc452/sicinskilab/results/deeptools2.5.3/$base_bamCoverage.log
 
-# --smoothLength can be as long as 1000, to smooth the peaks!
 #End
