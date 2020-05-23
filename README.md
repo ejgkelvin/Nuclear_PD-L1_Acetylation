@@ -27,5 +27,5 @@ Identifying DEG: Cuffdiff_CT26.slurm, Cuffdiff_MB231.slurm
 Processing Cuffdiff output: cummeRbund.R
 RNA-seq and ChIP-seq overlap (Figure 6j): GeneRanking.R
 Heatmap (Figure 6c, Ext Data Fig. 5h): pheatmap.R
-
+Scatter Plot (Figure 7a): RNAseqScatter.R
  
